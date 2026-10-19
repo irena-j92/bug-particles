@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111110">
+  <meta name="description" content="Bugged out — an interactive experiment in chrome, particles, and motion.">
+  <title>Bugged out — labs</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111110'/%3E%3Cellipse cx='16' cy='17' rx='9' ry='11' fill='%23e6ff83'/%3E%3Cpath d='M16 6v22' stroke='%23111110' stroke-width='2'/%3E%3Ccircle cx='11' cy='14' r='2'/%3E%3Ccircle cx='21' cy='20' r='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./vendor/gsap.min.js"></script>
+  <script defer src="./vendor/ScrollTrigger.min.js"></script>
+  <script type="module" src="./main.js?v=bitmap-4"></script>
+</head>
+<body>
+  <div class="loader" id="loader" role="status" aria-label="Loading interactive ladybug">
+    <canvas id="pixel-label" width="65" height="7" aria-label="loading..."></canvas>
+    <div class="loading-track"><div id="loading-fill"></div></div>
+    <span class="loading-number" id="loading-number">00</span>
+  </div>
+  <main id="experiment">
+    <section class="hero" aria-labelledby="title">
+      <header>
+        <a class="brand" href="#" aria-label="Labs, back to start">labs<span>®</span></a>
+        <span class="edition">INDEPENDENT EXPERIMENTS <span class="edition-divider">/</span> VOL. 001</span>
+        <button id="menu-button" class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+      </header>
+      <div class="title-wrap"><div class="eyebrow"><span class="asterisk">✳</span> A LITTLE NATURE. A LITTLE CHAOS.</div><h1 id="title">Bugged out</h1></div>
+      <div id="stage" tabindex="0" role="img" aria-label="Interactive bitmap-shaded 3D ladybug. Drag horizontally or use left and right arrow keys to rotate. Scroll down to disperse particles."></div>
+      <div id="fallback" hidden><p>The 3D experience couldn’t start on this device.</p><button onclick="location.reload()">Try again</button></div>
+      <aside id="menu" class="menu" hidden><span>EXPERIMENT 001</span><p>Chrome. Motion.<br>A little curiosity.</p><button id="restart">Back to the beginning</button></aside>
+      <div class="specimen"><span class="cross">+</span><span>COCCINELLIDAE<br><span class="muted">REIMAGINED IN PARTICLES</span></span></div>
+      <div class="interaction"><span class="drag-icon" aria-hidden="true">↔</span><span>DRAG TO ROTATE</span></div>
+      <footer><button class="scroll-cue" id="scroll-cue"><span class="scroll-line"></span>SCROLL TO LET GO</button><div class="experiment-count"><span id="phase-label">FORM</span><span class="progress-track"><i id="progress"></i></span><span id="percent">000</span><span class="muted">/ 100</span></div><span class="footer-note">BUILT TO BREAK APART.</span></footer>
+    </section>
+  </main>
+  <noscript><style>.loader{display:none}</style><p class="noscript">Enable JavaScript to explore the particle ladybug.</p></noscript>
+  <script>
+    // Also handle a failed ES-module download, before main.js can register errors.
+    window.setTimeout(function(){
+      var loader=document.getElementById('loader');
+      if(loader && getComputedStyle(loader).display!=='none'){
+        loader.style.display='none';
+        document.getElementById('fallback').hidden=false;
+      }
+    },16000);
+  </script>
+</body>
+</html>
